@@ -52,6 +52,12 @@ idlib_string = ' \
 	Timer.cpp \
 	Heap.cpp'
 
+if ( g_os == 'Darwin' ):
+	idlib_string += ' math/Simd_MMX.cpp \
+	math/Simd_SSE.cpp \
+	math/Simd_SSE2.cpp \
+	math/Simd_SSE3.cpp'
+
 idlib_list = scons_utils.BuildList( 'idlib', idlib_string )
 
 for i in range( len( idlib_list ) ):

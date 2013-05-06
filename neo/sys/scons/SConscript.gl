@@ -82,20 +82,22 @@ logfuncs = gl_env.Command( '../linux/glimp_logfuncs.cpp', '../gllog/logfunc.py',
 gl_env.Depends( logfuncs, '../gllog/gl_def.m4' )
 
 sources = []
-sources.append( '../gllog/gl_extensions.cpp' )
 
-if ( local_dedicated == 1 ):
-	sources.append( '../linux/glimp_stub.cpp' )
-else:
-	sources.append( '../linux/glimp_dlopen.cpp' )
-	sources.append( '../linux/glimp_logging.cpp' )
+if ( g_os == 'Linux' ):
+	sources.append( '../gllog/gl_extensions.cpp' )
+	
+	if ( local_dedicated == 1 ):
+		sources.append( '../linux/glimp_stub.cpp' )
+	else:
+		sources.append( '../linux/glimp_dlopen.cpp' )
+		sources.append( '../linux/glimp_logging.cpp' )
+	
+	#if ( DEDICATED != '0' ):
+	#	sources.append( '../linux/glimp_stub.cpp' )
+	#
+	#if ( GL_HARDLINK == '0' ):
+	#	sources.append( '../linux/glimp_dlopen.cpp' )
+	#	sources.append( '../linux/glimp_logging.cpp' )
 
-#if ( DEDICATED != '0' ):
-#	sources.append( '../linux/glimp_stub.cpp' )
-#
-#if ( GL_HARDLINK == '0' ):
-#	sources.append( '../linux/glimp_dlopen.cpp' )
-#	sources.append( '../linux/glimp_logging.cpp' )
-
-lib = gl_env.StaticLibrary( 'glimp', sources )
+	lib = gl_env.StaticLibrary( 'glimp', sources )
 #gl_env.Install( '../..', lib )

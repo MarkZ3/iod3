@@ -127,7 +127,10 @@ def checkLDD( target, source, env ):
 
 def SharedLibrarySafe( env, target, source ):
 	ret = env.SharedLibrary( target, source )
-	env.AddPostAction( ret, checkLDD )
+	
+	#todo: Mac check, otool -L ?
+	#env.AddPostAction( ret, checkLDD )
+	
 	return ret
 
 def NotImplementedStub( *whatever ):

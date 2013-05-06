@@ -152,7 +152,11 @@ else:
 		cpu = 'ppc'
 	else:
 		cpu = 'cpu'
-g_os = 'Linux'
+		
+if ( sys.platform == 'darwin' ):
+	g_os = 'Darwin'
+else:
+	g_os = 'Linux'
 
 # end system detection ---------------------------
 
@@ -293,6 +297,11 @@ if ( g_os == 'Linux' ):
 	# gcc 4.x option only - only export what we mean to from the game SO
 	BASECPPFLAGS.append( '-fvisibility=hidden' )
 	# get the 64 bits machine on the distcc array to produce 32 bit binaries :)
+	BASECPPFLAGS.append( '-m32' )
+	BASELINKFLAGS.append( '-m32' )
+	
+if ( g_os == 'Darwin' ):
+	BASECPPFLAGS.append( '-DMACOS_X' )
 	BASECPPFLAGS.append( '-m32' )
 	BASELINKFLAGS.append( '-m32' )
 

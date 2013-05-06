@@ -1,1 +1,7 @@
 build
+neo/curl
+*.DS_Store
+*.xcodeproj
+*.pyc
+neo/site.conf
+*.dblite
