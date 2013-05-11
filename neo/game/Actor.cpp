@@ -26,6 +26,8 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
+/*Test ajout comment*/
+
 #include "../idlib/precompiled.h"
 #pragma hdrstop
 
